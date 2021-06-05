@@ -2,35 +2,23 @@
 \alias{MRAID-package}
 \alias{MRAID}
 \docType{package}
-\title{
-\packageTitle{MRAID}
-}
-\description{
-\packageDescription{MRAID}
-}
+\title{\packageTitle{MRAID}}
+\description{MRAID(Mendelian Randomization with Automated Instrument Determination)}
 \details{
-
-The DESCRIPTION file:
-\packageDESCRIPTION{MRAID}
-\packageIndices{MRAID}
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
+ \tabular{ll}{
+Package: \tab MRAID\cr
+Type: \tab Package\cr
+Version: \tab 1.0\cr
+Date: \tab 2021-06-05\cr
+License: \tab GPL-3\cr
+}
 }
 \author{
-\packageAuthor{MRAID}
+   Zhongshang Yuan and Lu Liu
+  
+  Maintainer: Zhongshang Yuan <yuanzhongshang@sdu.edu.cn>
+}
 
-Maintainer: \packageMaintainer{MRAID}
-}
-\references{
-~~ Literature or other references for background information ~~
-}
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
-~~ the R documentation directory ~~
-\keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
-\examples{
-~~ simple examples of the most important functions ~~
-}
+% Optionally other standard keywords, one per line,
+% from the file KEYWORDS in the R documentation.
+\keyword{package}
