@@ -31,7 +31,7 @@ MRAID(
 \item{samplen1}{the sample size of exposure GWAS}
 \item{samplen2}{the sample size of outcome GWAS}
 \item{Gibbsnumber}{the number of Gibbs sampling iterations with the default to be 1000}
-\item{burninproportion}{the proportion to burn in from Gibbs sampling iterations, with default to be 20%}
+\item{burninproportion}{the proportion to burn in from Gibbs sampling iterations, with default to be 0.20}
 \item{pi_beta_shape}{the prior shape paramter for pi_beta with the default to be 0.5}
 \item{pi_beta_scale}{the prior scale paramter for pi_beta with the default to be 4.5}
 \item{pi_c_shape}{the prior shape paramter for pi_c with the default to be 0.5}
