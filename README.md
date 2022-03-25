@@ -13,7 +13,7 @@ It is easy to install the development version of MRAID package using the 'devtoo
 library(devtools)
 install_github("yuanzhongshang/MRAID")
 ```
-# UsageUsage
+# Usage
 The main function in the package is MRAID, you can find the instructions by '?MRAID'.
 ```
 library(MRAID)
