@@ -68,7 +68,7 @@ vec betaxh=betax, betayh=betay;
 	  
   mat Sigma1 = Sigma1s* (n1-1);
   mat Sigma2 = Sigma2s* (n2-1);				 
-	double sigma0_square = 1.0;
+	//double sigma0_square = 1.0;
 	double sigmaz1 = 2.0/p;
 	double pi = 0.1;
 	//pi means pi_beta
@@ -85,6 +85,7 @@ vec betaxh=betax, betayh=betay;
 	//pi_0
 	double sigma2z = 0.95;	
 	double sigma2gamma_1 = 1.0/p;
+	double maxvar = 1000;
 	double rho=0.1414;
 	//double sigma2gamma_2 = 1.0/p;
 	
@@ -127,9 +128,9 @@ double post_sigma2z_scale;
 double post_sigmaz1_scale;
 double post_sigmaz1_shape;
 double post_sigma2gamma_1_scale;
-double post_sigma2gamma_2_scale;
+//double post_sigma2gamma_2_scale;
 double post_sigma2gamma_1_shape;
-double post_sigma2gamma_2_shape;
+//double post_sigma2gamma_2_shape;
 double sigmaz1_prior_shape=p/10+1;
 double sigmaz1_prior_scale=0.2;
 double sigma2gamma_1_prior_shape=p/5.0+1;
@@ -206,7 +207,7 @@ I(k) = 0;
 
 double indicator = (as_scalar((I % latent_beta).t()* Sigma2 * (I % latent_beta))/sigma2z);
 
-if(indicator > 0){
+if(indicator > maxvar){
 double sample_rho_variance = 1.0/(as_scalar((I % latent_beta).t()* Sigma2 * (I % latent_beta))/sigma2z);
 
 double sample_rho_mean = (as_scalar((I % latent_beta).t()* betayh*(n2-1)-(I % latent_beta).t()*Sigma2*pleiotropy_gamma - (I % latent_beta).t()*Sigma2*latent_beta*alpha)/sigma2z)*sample_rho_variance;
@@ -220,11 +221,18 @@ rho=sample_rho(m);
 }
 
 
-double sample_alpha_variance = 1.0/(as_scalar(latent_beta.t()* Sigma2 * latent_beta)/sigma2z);
+double indicator_alpha = (as_scalar(latent_beta.t()* Sigma2 * latent_beta)/sigma2z);
 
-double sample_alpha_mean = (as_scalar(latent_beta.t()* betayh*(n2-1)-latent_beta.t()*Sigma2*pleiotropy_gamma-latent_beta.t()*Sigma2*(latent_beta % I)*rho)/sigma2z)*sample_alpha_variance;
- 
-sample_alpha(m) = as_scalar(randn(1)*sqrt(sample_alpha_variance)+ sample_alpha_mean);
+if (indicator_alpha>maxvar){
+  double sample_alpha_variance = 1.0/(as_scalar(latent_beta.t()* Sigma2 * latent_beta)/sigma2z);
+  
+  double sample_alpha_mean = (as_scalar(latent_beta.t()* betayh*(n2-1)-latent_beta.t()*Sigma2*pleiotropy_gamma-latent_beta.t()*Sigma2*(latent_beta % I)*rho)/sigma2z)*sample_alpha_variance;
+  
+  sample_alpha(m) = as_scalar(randn(1)*sqrt(sample_alpha_variance)+ sample_alpha_mean);
+  
+}else{
+  sample_alpha(m) = 0;
+}
 
 double shape1 = sum(latent_gamma)+lamda_beta1;
 
