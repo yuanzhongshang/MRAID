@@ -34,10 +34,11 @@ using namespace std;
 // [[Rcpp::export]]
 
 SEXP MRAID_CPP(SEXP betaxin, SEXP betayin, SEXP Sigma1sin, SEXP Sigma2sin, SEXP samplen1, SEXP samplen2, SEXP Gibbsnumberin, SEXP burninproportion, SEXP initial_betain, SEXP pi_beta_shape_in, SEXP pi_beta_scale_in,
-SEXP pi_c_shape_in, SEXP pi_c_scale_in, SEXP pi_1_shape_in, SEXP pi_1_scale_in,SEXP pi_0_shape_in, SEXP pi_0_scale_in){// *
+SEXP pi_c_shape_in, SEXP pi_c_scale_in, SEXP pi_1_shape_in, SEXP pi_1_scale_in,SEXP pi_0_shape_in, SEXP pi_0_scale_in, SEXP maxvarin){// *
 try{
 	const int Gibbs_number = Rcpp::as<int>(Gibbsnumberin);
 	const double burnin_p = Rcpp::as<double>(burninproportion);
+	const double maxvar = Rcpp::as<double>(maxvarin);
 	const int n1 = Rcpp::as<int>(samplen1);  
     const int n2 = Rcpp::as<int>(samplen2); 
 	const double lamda_beta1 = Rcpp::as<double>(pi_beta_shape_in); 
@@ -85,7 +86,7 @@ vec betaxh=betax, betayh=betay;
 	//pi_0
 	double sigma2z = 0.95;	
 	double sigma2gamma_1 = 1.0/p;
-	double maxvar = 1000;
+	//double maxvar = 100;
 	double rho=0.1414;
 	//double sigma2gamma_2 = 1.0/p;
 	
