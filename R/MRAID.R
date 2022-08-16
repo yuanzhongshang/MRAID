@@ -26,24 +26,43 @@
 #' \item{sigma_error_2}{The variance estimate of the error in outcome GWAS model}
 
 MRAID<-function(Zscore_1, Zscore_2, Sigma1sin, Sigma2sin, samplen1, samplen2, Gibbsnumber=1000,burninproportion=0.2,pi_beta_shape=0.5,
-pi_beta_scale=4.5,pi_c_shape=0.5,pi_c_scale=9.5,pi_1_shape=0.5,pi_1_scale=1.5,pi_0_shape=0.05,pi_0_scale=9.95){
-betaxin<-Zscore_1/sqrt(samplen1-1)
-betayin<-Zscore_2/sqrt(samplen2-1)
-initial_betain<-rep(0,length(betaxin))
-re=MRAID_CPP(betaxin,betayin,Sigma1sin,Sigma2sin,samplen1,samplen2,Gibbsnumberin=Gibbsnumber,burninproportion=burninproportion,initial_betain=initial_betain,
-pi_beta_shape_in=pi_beta_shape,pi_beta_scale_in=pi_beta_scale,pi_c_shape_in=pi_c_shape,pi_c_scale_in=pi_c_scale,pi_1_shape_in=pi_1_shape,pi_1_scale_in=pi_1_scale,
-pi_0_shape_in=pi_0_shape,pi_0_scale_in=pi_0_scale)
-
-pvalue<-2*(1-pnorm(abs(re$alpha/re$sd)))
-result=list()
-result$causal_effect=re$alpha
-result$causal_pvalue=pvalue
-result$correlated_pleiotropy_effect=re$rho
-result$sigmabeta=re$sigmabeta
-result$sigmaeta=re$sigmaeta
-result$sigma_error_1=re$sigma2x
-result$sigma_error_2=re$sigma2y
-return(result)
+                pi_beta_scale=4.5,pi_c_shape=0.5,pi_c_scale=9.5,pi_1_shape=0.5,pi_1_scale=1.5,pi_0_shape=0.05,pi_0_scale=9.95){
+  betaxin<-Zscore_1/sqrt(samplen1-1)
+  betayin<-Zscore_2/sqrt(samplen2-1)
+  initial_betain<-rep(0,length(betaxin))
+  maxvarin<-1000
+  re=MRAID_CPP(betaxin,betayin,Sigma1sin,Sigma2sin,samplen1,samplen2,Gibbsnumberin=Gibbsnumber,burninproportion=burninproportion,initial_betain=initial_betain,
+               pi_beta_shape_in=pi_beta_shape,pi_beta_scale_in=pi_beta_scale,pi_c_shape_in=pi_c_shape,pi_c_scale_in=pi_c_scale,pi_1_shape_in=pi_1_shape,pi_1_scale_in=pi_1_scale,
+               pi_0_shape_in=pi_0_shape,pi_0_scale_in=pi_0_scale,maxvarin)
+  
+  pvalue<-2*(1-pnorm(abs(re$alpha/re$sd)))
+  result=list()
+  result$causal_effect=re$alpha
+  result$causal_pvalue=pvalue
+  result$correlated_pleiotropy_effect=re$rho
+  result$sigmabeta=re$sigmabeta
+  result$sigmaeta=re$sigmaeta
+  result$sigma_error_1=re$sigma2x
+  result$sigma_error_2=re$sigma2y
+  
+  if (result$causal_effect==0){
+   maxvarin=0
+   re=MRAID_CPP(betaxin,betayin,Sigma1sin,Sigma2sin,samplen1,samplen2,Gibbsnumberin=Gibbsnumber,burninproportion=burninproportion,initial_betain=initial_betain,
+                pi_beta_shape_in=pi_beta_shape,pi_beta_scale_in=pi_beta_scale,pi_c_shape_in=pi_c_shape,pi_c_scale_in=pi_c_scale,pi_1_shape_in=pi_1_shape,pi_1_scale_in=pi_1_scale,
+                pi_0_shape_in=pi_0_shape,pi_0_scale_in=pi_0_scale,maxvarin)
+   
+   pvalue<-2*(1-pnorm(abs(re$alpha/re$sd)))
+   result=list()
+   result$causal_effect=re$alpha
+   result$causal_pvalue=pvalue
+   result$correlated_pleiotropy_effect=re$rho
+   result$sigmabeta=re$sigmabeta
+   result$sigmaeta=re$sigmaeta
+   result$sigma_error_1=re$sigma2x
+   result$sigma_error_2=re$sigma2y
+  }
+  
+  return(result)
 }
 
 
