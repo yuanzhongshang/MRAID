@@ -20,7 +20,8 @@ MRAID(
   pi_1_shape = 0.5,
   pi_1_scale = 1.5,
   pi_0_shape = 0.05,
-  pi_0_scale = 9.95
+  pi_0_scale = 9.95,
+  option = 1
 )
 }
 \arguments{
@@ -40,6 +41,7 @@ MRAID(
 \item{pi_1_scale}{the prior scale paramter for pi_1 with the default to be 1.5}
 \item{pi_0_shape}{the prior shape paramter for pi_0 with the default to be 0.05}
 \item{pi_0_scale}{the prior scale paramter for pi_0 with the default to be 9.95}
+\item{option}{the user-defined parameter with the default to be 1 to run MRAID normally, while using option=2 to potentially alleviate the issues with Gibbs sampler when standard errors are small due to the large sample size (e.g. 500,000) of the outcome GWAS. With large sample size of outcome GWAS, it is suggested to run MRAID with option=1 and option=2 for the optimal solution}
 }
 \value{
 A list of estimated parameters including the p values for the causal effect test 
