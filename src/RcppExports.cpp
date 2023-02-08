@@ -6,14 +6,9 @@
 
 using namespace Rcpp;
 
-#ifdef RCPP_USE_GLOBAL_ROSTREAM
-Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
-Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
-#endif
-
 // MRAID_CPP
-SEXP MRAID_CPP(SEXP betaxin, SEXP betayin, SEXP Sigma1sin, SEXP Sigma2sin, SEXP samplen1, SEXP samplen2, SEXP Gibbsnumberin, SEXP burninproportion, SEXP initial_betain, SEXP pi_beta_shape_in, SEXP pi_beta_scale_in, SEXP pi_c_shape_in, SEXP pi_c_scale_in, SEXP pi_1_shape_in, SEXP pi_1_scale_in, SEXP pi_0_shape_in, SEXP pi_0_scale_in, SEXP maxvarin);
-RcppExport SEXP _MRAID_MRAID_CPP(SEXP betaxinSEXP, SEXP betayinSEXP, SEXP Sigma1sinSEXP, SEXP Sigma2sinSEXP, SEXP samplen1SEXP, SEXP samplen2SEXP, SEXP GibbsnumberinSEXP, SEXP burninproportionSEXP, SEXP initial_betainSEXP, SEXP pi_beta_shape_inSEXP, SEXP pi_beta_scale_inSEXP, SEXP pi_c_shape_inSEXP, SEXP pi_c_scale_inSEXP, SEXP pi_1_shape_inSEXP, SEXP pi_1_scale_inSEXP, SEXP pi_0_shape_inSEXP, SEXP pi_0_scale_inSEXP, SEXP maxvarinSEXP) {
+SEXP MRAID_CPP(SEXP betaxin, SEXP betayin, SEXP Sigma1sin, SEXP Sigma2sin, SEXP samplen1, SEXP samplen2, SEXP Gibbsnumberin, SEXP burninproportion, SEXP initial_betain, SEXP pi_beta_shape_in, SEXP pi_beta_scale_in, SEXP pi_c_shape_in, SEXP pi_c_scale_in, SEXP pi_1_shape_in, SEXP pi_1_scale_in, SEXP pi_0_shape_in, SEXP pi_0_scale_in);
+RcppExport SEXP _MRAID_MRAID_CPP(SEXP betaxinSEXP, SEXP betayinSEXP, SEXP Sigma1sinSEXP, SEXP Sigma2sinSEXP, SEXP samplen1SEXP, SEXP samplen2SEXP, SEXP GibbsnumberinSEXP, SEXP burninproportionSEXP, SEXP initial_betainSEXP, SEXP pi_beta_shape_inSEXP, SEXP pi_beta_scale_inSEXP, SEXP pi_c_shape_inSEXP, SEXP pi_c_scale_inSEXP, SEXP pi_1_shape_inSEXP, SEXP pi_1_scale_inSEXP, SEXP pi_0_shape_inSEXP, SEXP pi_0_scale_inSEXP,SEXP maxvarinSEXP, SEXP alphainSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -35,13 +30,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< SEXP >::type pi_0_shape_in(pi_0_shape_inSEXP);
     Rcpp::traits::input_parameter< SEXP >::type pi_0_scale_in(pi_0_scale_inSEXP);
     Rcpp::traits::input_parameter< SEXP >::type maxvarin(maxvarinSEXP);
-    rcpp_result_gen = Rcpp::wrap(MRAID_CPP(betaxin, betayin, Sigma1sin, Sigma2sin, samplen1, samplen2, Gibbsnumberin, burninproportion, initial_betain, pi_beta_shape_in, pi_beta_scale_in, pi_c_shape_in, pi_c_scale_in, pi_1_shape_in, pi_1_scale_in, pi_0_shape_in, pi_0_scale_in, maxvarin));
+    Rcpp::traits::input_parameter< SEXP >::type alphain(alphainSEXP);
+    rcpp_result_gen = Rcpp::wrap(MRAID_CPP(betaxin, betayin, Sigma1sin, Sigma2sin, samplen1, samplen2, Gibbsnumberin, burninproportion, initial_betain, pi_beta_shape_in, pi_beta_scale_in, pi_c_shape_in, pi_c_scale_in, pi_1_shape_in, pi_1_scale_in, pi_0_shape_in, pi_0_scale_in,maxvarin,alphain));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_MRAID_MRAID_CPP", (DL_FUNC) &_MRAID_MRAID_CPP, 18},
+    {"_MRAID_MRAID_CPP", (DL_FUNC) &_MRAID_MRAID_CPP, 17},
     {NULL, NULL, 0}
 };
 
