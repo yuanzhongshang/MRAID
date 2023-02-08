@@ -34,7 +34,7 @@ using namespace std;
 // [[Rcpp::export]]
 
 SEXP MRAID_CPP(SEXP betaxin, SEXP betayin, SEXP Sigma1sin, SEXP Sigma2sin, SEXP samplen1, SEXP samplen2, SEXP Gibbsnumberin, SEXP burninproportion, SEXP initial_betain, SEXP pi_beta_shape_in, SEXP pi_beta_scale_in,
-SEXP pi_c_shape_in, SEXP pi_c_scale_in, SEXP pi_1_shape_in, SEXP pi_1_scale_in,SEXP pi_0_shape_in, SEXP pi_0_scale_in, SEXP maxvarin){// *
+SEXP pi_c_shape_in, SEXP pi_c_scale_in, SEXP pi_1_shape_in, SEXP pi_1_scale_in,SEXP pi_0_shape_in, SEXP pi_0_scale_in, SEXP maxvarin, SEXP alphain){// *
 try{
 	const int Gibbs_number = Rcpp::as<int>(Gibbsnumberin);
 	const double burnin_p = Rcpp::as<double>(burninproportion);
@@ -49,12 +49,13 @@ try{
 	const double lamda_22 = Rcpp::as<double>(pi_1_scale_in); 
 	const double lamda_31 = Rcpp::as<double>(pi_0_shape_in); 
 	const double lamda_32 = Rcpp::as<double>(pi_0_scale_in); 
-	
+	const double alpha0 = as<double>(alphain);
 	const arma::vec betax = as<arma::vec>(betaxin);
     const arma::vec betay = as<arma::vec>(betayin);
     const arma::mat Sigma1s = as<arma::mat>(Sigma1sin);
     const arma::mat Sigma2s = as<arma::mat>(Sigma2sin);
     const arma::vec initial_beta = as<arma::vec>(initial_betain);
+    
 	//const double sigma2y = Rcpp::as<double>(sigma2yin);
 	//const double sigma2z = Rcpp::as<double>(sigma2zin);
 	//const double sigma2beta = Rcpp::as<double>(sigma2betain);
@@ -86,11 +87,10 @@ vec betaxh=betax, betayh=betay;
 	//pi_0
 	double sigma2z = 0.95;	
 	double sigma2gamma_1 = 1.0/p;
-	//double maxvar = 100;
 	double rho=0.1414;
 	//double sigma2gamma_2 = 1.0/p;
 	
-double alpha = 0;  
+double alpha = alpha0;  
   
 vec latent_beta = initial_beta;  
 
