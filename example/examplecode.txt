@@ -23,6 +23,6 @@ samplen2=30000
 
 #run MRAID 
 result<-MRAID(Zscore_1, Zscore_2, Sigma1sin, Sigma2sin, samplen1, samplen2, Gibbsnumber=1000,burninproportion=0.2,pi_beta_shape=0.5,
-pi_beta_scale=4.5,pi_c_shape=0.5,pi_c_scale=9.5,pi_1_shape=0.5,pi_1_scale=1.5,pi_0_shape=0.05,pi_0_scale=9.95,option=1)
+pi_beta_scale=4.5,pi_c_shape=0.5,pi_c_scale=9.5,pi_1_shape=0.5,pi_1_scale=1.5,pi_0_shape=0.05,pi_0_scale=9.95)
 
 #result
