@@ -38,7 +38,7 @@ MRAID(
 
 \item{Gibbsnumber}{the number of Gibbs sampling iterations with the default to be 1000}
 
-\item{burninproportion}{the proportion to burn in from Gibbs sampling iterations, with default to be 20%}
+\item{burninproportion}{the proportion to burn in from Gibbs sampling iterations, with default to be 0.2}
 
 \item{pi_beta_shape}{the prior shape paramter for pi_beta with the default to be 0.5}
 
