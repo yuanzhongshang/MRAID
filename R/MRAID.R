@@ -7,7 +7,7 @@
 #' @param samplen1 the sample size of exposure GWAS 
 #' @param samplen2 the sample size of outcome GWAS 
 #' @param Gibbsnumber the number of Gibbs sampling iterations with the default to be 1000
-#' @param burninproportion  the proportion to burn in from Gibbs sampling iterations, with default to be 20%  
+#' @param burninproportion  the proportion to burn in from Gibbs sampling iterations, with default to be 0.2
 #' @param pi_beta_shape the prior shape paramter for pi_beta with the default to be 0.5
 #' @param pi_beta_scale the prior scale paramter for pi_beta with the default to be 4.5
 #' @param pi_c_shape the prior shape paramter for pi_c with the default to be 0.5
