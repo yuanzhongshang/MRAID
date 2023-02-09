@@ -21,8 +21,8 @@ MRAID_CPP(
   pi_1_shape_in,
   pi_1_scale_in,
   pi_0_shape_in,
-  pi_0_scale_in，
-  maxvarin，
+  pi_0_scale_in,
+  maxvarin,
   alphain
 )
 }
