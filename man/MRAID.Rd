@@ -25,20 +25,35 @@ MRAID(
 }
 \arguments{
 \item{Zscore_1}{the Zscore vector of the SNP effect size vector for the exposure}
+  
 \item{Zscore_2}{the Zscore vector of the SNP effect size vector for the outcome}
+  
 \item{Sigma1sin}{the LD matrix for the SNPs in the exposure GWAS data}
+  
 \item{Sigma2sin}{the LD matrix for the SNPs in the outcome GWAS data,both Sigma2sin and sigma1sin are often from the same reference panel}
+  
 \item{samplen1}{the sample size of exposure GWAS}
+  
 \item{samplen2}{the sample size of outcome GWAS}
+  
 \item{Gibbsnumber}{the number of Gibbs sampling iterations with the default to be 1000}
+  
 \item{burninproportion}{the proportion to burn in from Gibbs sampling iterations, with default to be 20%}
+  
 \item{pi_beta_shape}{the prior shape paramter for pi_beta with the default to be 0.5}
+  
 \item{pi_beta_scale}{the prior scale paramter for pi_beta with the default to be 4.5}
+  
 \item{pi_c_shape}{the prior shape paramter for pi_c with the default to be 0.5}
+  
 \item{pi_c_scale}{the prior shape paramter for pi_c with the default to be 9.5}
+  
 \item{pi_1_shape}{the prior shape paramter for pi_1 with the default to be 0.5}
+  
 \item{pi_1_scale}{the prior scale paramter for pi_1 with the default to be 1.5}
+  
 \item{pi_0_shape}{the prior shape paramter for pi_0 with the default to be 0.05}
+  
 \item{pi_0_scale}{the prior scale paramter for pi_0 with the default to be 9.95}
 }
 \value{
