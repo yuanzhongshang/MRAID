@@ -2,8 +2,8 @@ Package: MRAID
 Type: Package
 Title: MRAID(Mendelian Randomization with Automated Instrument
         Determination)
-Version: 2.0
-Date: 2023-02-05
+Version: 1.0
+Date: 2021-06-05
 Author: Zhongshang Yuan and Lu Liu
 Maintainer: Zhongshang Yuan <yuanzhongshang@sdu.edu.cn>
 Description: MRAID is an R package for efficient statistical inference of two-sample Mendelian Randomization. MRAID takes GWAS summary statistics as inputs to estimate causal effects of one trait on another.  MRAID is able to model an initial set of candidate SNP instruments that are in high LD with each other and perform automated instrument selection to identify suitable SNPs to serve as instrumental variables. MRAID simultaneously accounts for both uncorrelated and correlated horizontal pleiotropy, relies on a scalable sampling-based inference algorithm to perform numerical integration, circumventing the difficulty in likelihood function, leading to calibrated p-values that enable reasonably large-scale exposure screening.
@@ -12,4 +12,4 @@ Imports: Rcpp (>= 1.0.6)
 LinkingTo: Rcpp, RcppArmadillo, RcppDist
 RoxygenNote: 7.1.1
 NeedsCompilation: yes
-Packaged: 2023-02-05 01:07:04 UTC; liulu
+Packaged: 2021-06-05 01:07:04 UTC; liulu
